@@ -131,8 +131,7 @@ public final class FFileLoading extends javax.swing.JFrame {
                 if (sessionList == null) {
                   f = new PFile(file, Data.getFiles().size(), fUpload.get(i),
                           fEdit.get(i), fName.get(i), fDesc.get(i),
-                          fDate.get(i), fCats.get(i), new Coord(fCoor.get(i)),
-                          true);
+                          fDate.get(i), fCats.get(i), new Coord(fCoor.get(i)));
                 } else {
                   SessionFile sessionFile = sessionList.getSessionFiles().get(i);
                   ImmutableCoordinate coordinate = sessionFile.getCoordinate();
@@ -143,13 +142,14 @@ public final class FFileLoading extends javax.swing.JFrame {
                        coord.setHeading(coordinate.getHeading());
                     }
                   }
-                  f = new PFile(file, Data.getFiles().size(), false, false,
+                  f = new PFile(file, Data.getFiles().size(),
+                          false, 
+                          sessionFile.getSelected(),
                           sessionFile.getName(),
                           sessionFile.getDesc(),
                           sessionFile.getDate(),
                           sessionFile.getCats(),
-                          coord,
-                          sessionFile.getSelected()
+                          coord
                   );
                 }
               } else {

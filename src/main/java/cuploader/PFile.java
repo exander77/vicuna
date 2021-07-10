@@ -113,7 +113,7 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
         //PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, tName);
     }
     
-    public PFile(File file, int number, boolean toUpload, boolean toEdit, String name, String desc, String date, String cats, Coord coor, boolean selected) {
+    public PFile(File file, int number, boolean toUpload, boolean toEdit, String name, String desc, String date, String cats, Coord coor) {
         this.file = file;
         this.number = number;
         
@@ -141,8 +141,6 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
             this.coor = coor;
             setCoordinates(this.coor);
         }
-
-        selectToUpload(selected);
         
         //generateThumbnail();
     }

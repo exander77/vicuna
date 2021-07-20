@@ -6,6 +6,7 @@ import cuploader.License;
 import cuploader.PFile;
 import cuploader.QuickTemplate;
 import cuploader.Settings;
+import java.awt.Dimension;
 import java.awt.event.*;
 import java.io.File;
 import javax.swing.*;
@@ -25,6 +26,10 @@ public class FSettings extends javax.swing.JFrame {
         addWindowListener(exit);
         setResizable(false);
         setLocationRelativeTo(null);
+        
+        //FIX
+        tCategories.setMaximumSize(new Dimension(jPanel9.getPreferredSize().width, 5));
+        tPermission.setMaximumSize(new Dimension(jPanel9.getPreferredSize().width, 5));
         
         //GENERAL
         if(!Data.settings.author.equals("own")) {

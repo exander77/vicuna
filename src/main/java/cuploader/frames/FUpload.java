@@ -249,8 +249,19 @@ public class FUpload extends javax.swing.JFrame {
               desc.replace("%EXTRA%", settings.extraText);
 
       String[] c = file.getComponent(Elem.COOR).split(";");
-      String out = "";
-      if(c.length>1) out += "{{Location dec|" + c[0] + "|" + c[1] + "}}";
+      StringBuilder out = new StringBuilder();
+      if(c.length>1) {
+          out.append("{{Location dec|");
+          out.append(c[0]);
+          out.append("|");
+          out.append(c[1]);
+          if (c.length>2 && c[2] != null && !c[2].isEmpty()) {
+              out.append("|heading:");
+              out.append(c[2]);
+          }
+          out.append("}}");
+      
+      }
       desc = desc.replace("%COOR%", out);
         
       return desc;

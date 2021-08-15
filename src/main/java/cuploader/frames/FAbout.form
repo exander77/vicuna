@@ -98,7 +98,7 @@
               <Image iconType="3" name="/cuploader/resources/logo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&lt;html&gt;&lt;body&gt;Vicu&#xf1;aUploader &quot; + Data.version + &quot;&lt;br&gt;&quot; + Data.date + &quot;&lt;/body&gt;&lt;/html&gt;&quot;" type="code"/>
+              <Connection code="&quot;&lt;html&gt;&lt;body&gt;Vicu&#xf1;aUploader &quot; + Data.version + Data.minorVersion + + Data.typeVersion + &quot;&lt;br&gt;&quot; + Data.date + &quot;&lt;/body&gt;&lt;/html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>

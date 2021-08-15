@@ -213,7 +213,7 @@ public final class Main extends javax.swing.JFrame
         mShow.add(mViewNotUpload1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("VicuñaUploader " + Data.version);
+        setTitle("VicuñaUploader " + Data.version + Data.minorVersion + " " + Data.typeVersion);
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cuploader/resources/logo.png")));
         setMinimumSize(new java.awt.Dimension(900, 600));

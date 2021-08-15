@@ -1499,6 +1499,7 @@ class Comment {
           SessionList sessionList = (SessionList) xstream.fromXML(files);
           new FFileLoading(sessionList);
           
+          mEdit.setEnabled(true);
         } catch (ClassCastException ex) {
           error("Bad session file format", ex);
           return false;

@@ -28,7 +28,7 @@ public class Coord {
     
     public Coord(String[] lat, String NS, String[] lon, String EW, String heading) {
         this(lat, NS, lon, EW);
-        setHeading(heading);
+        _setHeading(heading);
     }
     
     public Coord(String lat, String lon) {
@@ -36,9 +36,20 @@ public class Coord {
         this.lon = Double.parseDouble(lon);
     }
     
+    public Coord(String lat, String lon, String heading) {
+        this.lat = Double.parseDouble(lat);
+        this.lon = Double.parseDouble(lon);
+        _setHeading(heading);
+    }
+    
     public Coord(double lat, double lon) {
         this.lat = lat;
         this.lon = lon;
+    }
+    
+    public Coord(double lat, double lon, String heading) {
+        this(lat, lon);
+        _setHeading(heading);
     }
 
     public Coord(String decimal) {
@@ -47,8 +58,12 @@ public class Coord {
       this.lon = Double.parseDouble(s[1]);
     }
     
-    public void setHeading(String heading) {
+    private void _setHeading(String heading) {
       this.heading = heading == null ? "" : heading;
+    }
+    
+    public void setHeading(String heading) {
+      _setHeading(heading);
     }
     
     public String[] getDM() {
@@ -91,11 +106,12 @@ public class Coord {
     }
     
     public String getDMSformated() {
-        return "<html><body>&nbsp;&nbsp;&nbsp;" + getDMS()[0] + "<br>&nbsp;&nbsp;&nbsp;" + getDMS()[1] + "</body></html>";
+        String[] dms = getDMS();
+        return "<html><body>&nbsp;&nbsp;&nbsp;" + dms[0] + "<br>&nbsp;&nbsp;&nbsp;" + dms[1] + "</body></html>";
     }
     
     public String getDecimal() {
-        return lat + ";" + lon;
+        return lat + ";" + lon + ";" + heading;
     }
     
     public String getLat() {

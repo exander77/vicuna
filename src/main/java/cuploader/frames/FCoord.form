@@ -39,7 +39,15 @@
                       <Component id="bBing" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bMapquest" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bMapyCZBase" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bMapyCZBing" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bMapyCZTourist" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bMapsGoogleCOM" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -56,6 +64,10 @@
                   <Component id="bOSM" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bBing" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bMapquest" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bMapyCZTourist" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bMapyCZBing" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bMapyCZBase" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bMapsGoogleCOM" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pMap" max="32767" attributes="0"/>
@@ -95,7 +107,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="tCoor" max="32767" attributes="0"/>
-                      <Component id="jLabel3" pref="461" max="32767" attributes="0"/>
+                      <Component id="jLabel3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="bSave" min="-2" pref="120" max="-2" attributes="0"/>
@@ -202,6 +214,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMapquestActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bMapyCZTourist">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mapy.cz Turist"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMapyCZTouristActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bMapyCZBing">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mapy.cz Bing"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMapyCZBingActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bMapyCZBase">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mapy.cz Base"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMapyCZBaseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bMapsGoogleCOM">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Google"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMapsGoogleCOMActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

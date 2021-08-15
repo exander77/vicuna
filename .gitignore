@@ -2,3 +2,4 @@ build
 .vicuna-settings
 settings.vicuna
 .gradle
+dist

@@ -40,7 +40,7 @@ public class FUpload extends javax.swing.JFrame {
         if(set.fileDescSource==1 && !set.fileDescPath.isEmpty())
             f = new File(Data.settings.fileDescPath);
         wiki = Data.wiki;
-        wiki.setUserAgent("VicunaUploader/" + Data.version + " (https://github.com/yarl/vicuna)");
+        wiki.setUserAgent("VicunaUploader/" + Data.version + Data.minorVersion + " (https://github.com/exander77/vicuna)");
           
         setVisible(true);
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
@@ -371,7 +371,7 @@ public class FUpload extends javax.swing.JFrame {
                     try {
                         List<String> pages = List.of(name);
                         boolean fileExist = wiki.exists(pages)[0];
-                        if(!fileExist) wiki.upload(file.file, name, desc, "VicuñaUploader " + Data.version);
+                        if(!fileExist) wiki.upload(file.file, name, desc, "VicuñaUploader " + Data.version + Data.minorVersion);
                         
                         if(set.createGallery) gallery += "File:" + name + "|" + file.getComponent(Elem.DESC).replaceAll("\n", "") + "\n";
                         if(set.renameAfterUpload) {

@@ -104,7 +104,7 @@ public class FLogin extends javax.swing.JFrame implements WindowListener {
         }
 
         w = Wiki.newSession(Data.settings.server, Data.settings.path, Data.settings.protocol);
-        w.setUserAgent("VicunaUploader/" + Data.version + " (https://github.com/yarl/vicuna)");
+        w.setUserAgent("VicunaUploader/" + Data.version + Data.minorVersion + " (https://github.com/exander77/vicuna)");
 
 
         //login info

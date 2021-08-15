@@ -49,7 +49,7 @@ public class FAbout extends javax.swing.JFrame {
     jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("help-about"))); // NOI18N
 
     lInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cuploader/resources/logo.png"))); // NOI18N
-    lInfo.setText("<html><body>VicuñaUploader " + Data.version + "<br>" + Data.date + "</body></html>");
+    lInfo.setText("<html><body>VicuñaUploader " + Data.version + Data.minorVersion + " " + Data.typeVersion + "<br>" + Data.date + "</body></html>");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -175,7 +175,7 @@ public class FAbout extends javax.swing.JFrame {
       public void localizationChanged(java.util.Locale loc) {
           Logger.getLogger(FAbout.class.getName()).log(Level.INFO, "Reloading messages");
           bundle = java.util.ResourceBundle.getBundle("cuploader.text.messages", loc);
-          lInfo.setText("<html><body>VicuñaUploader " + Data.version + "<br>" + Data.date + "</body></html>");
+          lInfo.setText("<html><body>VicuñaUploader " + Data.version + Data.minorVersion + " " + Data.typeVersion + "<br>" + Data.date + "</body></html>");
           setTitle(bundle.getString("help-about")); // NOI18N
           jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("help-about"))); // NOI18N
           jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("about-used"))); // NOI18N

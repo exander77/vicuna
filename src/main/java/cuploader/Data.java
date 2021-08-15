@@ -47,6 +47,8 @@ public class Data implements Serializable {
     public static UndoManager manager = new UndoManager();
     
     public static String version;
+    public static String minorVersion;
+    public static String typeVersion;
     public static String date;
     private static boolean loggedIn = false;
     

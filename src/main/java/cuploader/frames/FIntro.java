@@ -29,12 +29,14 @@ public class FIntro extends javax.swing.JFrame {
     bCancel.setVisible(false);
     
     Data.version = "1.24";
+    Data.minorVersion = ".1a";
+    Data.typeVersion = "Supported Edition";
     Data.date = "";
     
     Runnable run = new Runnable() {
       @Override
       public void run() {
-        tTitle.setText("<html><body><b>VicuñaUploader " + Data.version + "</b></body></html>");
+        tTitle.setText("<html><body><b>VicuñaUploader " + Data.version + Data.minorVersion + " " + Data.typeVersion + "</b></body></html>");
         setVisible(true);
         
         boolean b = checkVersion();

@@ -9,6 +9,8 @@ import cuploader.Settings;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
@@ -17,8 +19,8 @@ public class FSettings extends javax.swing.JFrame {
     private final QuickTemplatesModel model = new QuickTemplatesModel();
     DefaultTableModel dm = new DefaultTableModel();
     
-    PFile exampleFile = new PFile(new File("Example file.jpg"), -1, false, false, "example-file.jpg", "Example file description.", "2016-01-01", "Example file category", null);
-    Settings previewSettings = new Settings();
+    PFile exampleFile = new PFile(new File("Example file.jpg"), -1, false, false, "example-file.jpg", "Example file description.", new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "Example file category", null);
+    Settings previewSettings = Data.settings;//new Settings();
     
     public FSettings() {
 

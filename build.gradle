@@ -15,6 +15,8 @@ plugins {
 }
 
 repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
     mavenCentral()
 }
 
@@ -35,6 +37,7 @@ application {
     // Define the main class for the application.
     mainClassName = 'cuploader.frames.FIntro'
     applicationName = 'vicuna'
+    //applicationDefaultJvmArgs = ["-XX:+IgnoreUnrecognizedVMOptions", "--add-opens", "java.desktop/java.awt=ALL-UNNAMED"]
 }
 
 java {

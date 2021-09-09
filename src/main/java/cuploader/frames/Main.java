@@ -73,7 +73,7 @@ public final class Main extends javax.swing.JFrame
     pFilesScroll.getVerticalScrollBar().setUnitIncrement(16);
     mEdit.setEnabled(false);
     mFileUploadSelect.setEnabled(false);
-    mUpload.setEnabled(false);
+    mUpload.setEnabled(true);
     
     dropInfo.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18));
     dropInfo.setForeground(new Color(230, 230, 230));

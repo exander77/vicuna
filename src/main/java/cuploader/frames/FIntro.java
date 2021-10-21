@@ -29,7 +29,7 @@ public class FIntro extends javax.swing.JFrame {
     bCancel.setVisible(false);
     
     Data.version = "1.24";
-    Data.minorVersion = ".7a";
+    Data.minorVersion = ".8a";
     Data.typeVersion = "Supported Edition";
     Data.date = "";
     

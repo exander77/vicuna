@@ -15,12 +15,15 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class FSettings extends javax.swing.JFrame {
     private final QuickTemplatesModel model = new QuickTemplatesModel();
     DefaultTableModel dm = new DefaultTableModel();
     
     PFile exampleFile = new PFile(new File("Example file.jpg"), -1, false, false, "example-file.jpg", "Example file description.", new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "Example file category", null);
-    Settings previewSettings = Data.settings;//new Settings();
+    Settings previewSettings = new Settings(Data.settings);//new Settings();
     
     public FSettings() {
 
@@ -1244,6 +1247,13 @@ public class FSettings extends javax.swing.JFrame {
             Data.fSettings = null;
         }
     };
+
+    protected static Logger log = Logger.getLogger(FSettings.class.getName());
+
+    protected static void debug(String s) {
+        log.log(Level.INFO, s);
+    }
+
     static final long serialVersionUID = 8765476340053495420L;
 }
 

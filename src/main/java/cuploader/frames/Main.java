@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.converters.awt.DimensionConverter;
 import com.thoughtworks.xstream.converters.awt.PointConverter;
 import com.thoughtworks.xstream.converters.enums.EnumConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import cuploader.Data;
 import static cuploader.Data.fSettings;
@@ -14,7 +13,6 @@ import static cuploader.Data.settings;
 import cuploader.FileFilters;
 import cuploader.License;
 import cuploader.PFile;
-import cuploader.SessionFile;
 import cuploader.SessionList;
 import cuploader.Settings;
 import cuploader.ServerMonitor;
@@ -40,11 +38,9 @@ import java.net.URL;
 import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.util.*;
-import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.border.Border;
 import org.wikipedia.Wiki;
 
 public final class Main extends javax.swing.JFrame
@@ -53,8 +49,7 @@ public final class Main extends javax.swing.JFrame
   Data data;
   ServerMonitor monitor;
 
-  public final static String UPDATE_URL = "http://yarl.github.io/vicuna/download/latest.jar";
-  public final static String HOMEPAGE_URL = "http://yarl.github.io/vicuna/";
+  public final static String HOMEPAGE_URL = "https://github.com/exander77/vicuna/releases";
 
   public Main(Data data) {
 
@@ -1133,7 +1128,7 @@ public final class Main extends javax.swing.JFrame
 
     private void mHelpOnlineActionPerformed(java.awt.event.ActionEvent evt) {
       try {
-        Desktop.getDesktop().browse(new URI("https://github.com/yarl/vicuna/wiki#head"));
+        Desktop.getDesktop().browse(new URI("https://github.com/exander/vicuna/"));
       } catch (URISyntaxException ex) {
         error(null, ex);
       } catch (IOException ex) {
@@ -1343,17 +1338,20 @@ public final class Main extends javax.swing.JFrame
 
   private void checkVersion() {
     try {
-      List<String> pages = List.of("User:Yarl/VicunaUploader/version");
+      List<String> pages = List.of("User:Exander77/VicunaUploader/version");
       String v = Wiki.newSession("commons.wikimedia.org").getPageText(pages).get(0).trim();
-      if (Double.parseDouble(v) > Double.parseDouble(Data.version)) {
+      Logger.getLogger(Main.class.getName()).log(Level.INFO, "Newest version: {0}", v);
+      Logger.getLogger(Main.class.getName()).log(Level.INFO, "Curent version: {0}{1}", new Object[]{Data.version, Data.minorVersion});
+      if(v.compareTo(Data.version+Data.minorVersion)>0) {
         Object[] o = {Data.text("button-autoupdate"), Data.text("button-download"), Data.text("button-cancel")};
         int n = JOptionPane.showOptionDialog(rootPane, "<html><body>" + Data.text("about-checkupdate-text") + " (<b>" + v + "</b>).</body></html>",
                 Data.text("about-checkupdate"), JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, o, o[0]);
         if (n == 0) {
+          String updateURL = "https://github.com/exander77/vicuna/releases/download/v" + v + "/" + v + ".jar";
           try {
-            new FDownload(this, new URL(UPDATE_URL));
+            new FDownload(this, new URL(updateURL));
           } catch (MalformedURLException ex) {
-            error("Cannot download: <" + UPDATE_URL + ">", ex);
+            error("Cannot download: <" + updateURL + ">", ex);
           }
         } else if (n == 1) {
           try {

@@ -1,6 +1,7 @@
 package cuploader.frames;
 
 import cuploader.Data;
+import static cuploader.frames.Main.error;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import org.wikipedia.Wiki;
 
@@ -18,8 +21,7 @@ public class FIntro extends javax.swing.JFrame {
   Data data = new Data();
   Main m;
 
-  public final static String UPDATE_URL = "http://yarl.github.io/vicuna/download/latest.jar";
-  public final static String HOMEPAGE_URL = "http://yarl.github.io/vicuna/";
+  public final static String HOMEPAGE_URL = "https://github.com/exander77/vicuna/releases";
   
   public FIntro() {
     initComponents();
@@ -28,8 +30,8 @@ public class FIntro extends javax.swing.JFrame {
     bDownload.setVisible(false);
     bCancel.setVisible(false);
     
-    Data.version = "1.24";
-    Data.minorVersion = ".8a";
+    Data.version = "1.3";
+    Data.minorVersion = ".0a";
     Data.typeVersion = "Supported Edition";
     Data.date = "";
     
@@ -178,10 +180,16 @@ public class FIntro extends javax.swing.JFrame {
   private void bUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUpdateActionPerformed
     URL source = forcedUpdateURL();
     if (source == null) {
+       String updateURL = "UNKNOWN";
        try {
-         source = new URL(UPDATE_URL);
+         List<String> pages = List.of("User:Exander77/VicunaUploader/version");
+         String v = Wiki.newSession("commons.wikimedia.org").getPageText(pages).get(0).trim();
+         updateURL = "https://github.com/exander77/vicuna/releases/download/v" + v + "/" + v + ".jar";
+         source = new URL(updateURL);
        } catch (MalformedURLException ex) {
-         error("Invalid update URL: <" + UPDATE_URL + ">", ex);
+         error("Invalid update URL: <" + updateURL + ">", ex);
+       } catch (IOException ex) {
+            Logger.getLogger(FIntro.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
     new FDownload(this, source);
@@ -212,9 +220,11 @@ public class FIntro extends javax.swing.JFrame {
    */
   private boolean checkVersion() {
     try {
-      List<String> pages = List.of("User:Yarl/VicunaUploader/version");
+      List<String> pages = List.of("User:Exander77/VicunaUploader/version");
       String v = Wiki.newSession("commons.wikimedia.org").getPageText(pages).get(0).trim();
-      if (Double.parseDouble(v) > Double.parseDouble(Data.version) || forcedUpdateURL() != null) {
+      Logger.getLogger(FIntro.class.getName()).log(Level.INFO, "Newest version: {0}", v);
+      Logger.getLogger(FIntro.class.getName()).log(Level.INFO, "Curent version: {0}{1}", new Object[]{Data.version, Data.minorVersion});
+      if(v.compareTo(Data.version+Data.minorVersion)>0) {
         bUpdate.setVisible(true);
         bDownload.setVisible(true);
         bCancel.setVisible(true);

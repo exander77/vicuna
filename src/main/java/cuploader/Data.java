@@ -1,6 +1,8 @@
 package cuploader;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.awt.DimensionConverter;
+import com.thoughtworks.xstream.converters.awt.PointConverter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import cuploader.frames.*;
 import cuploader.SessionList;
@@ -193,6 +195,8 @@ public class Data implements Serializable {
         xstream.processAnnotations(cuploader.Settings.class);
         xstream.processAnnotations(cuploader.QuickTemplate.class);
         xstream.processAnnotations(cuploader.DescSource.class);
+        xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);
+        xstream.registerConverter(new PointConverter(), Integer.MAX_VALUE);
 
         try {
           Writer writer = new OutputStreamWriter(new FileOutputStream("settings.vicuna"), Charset.forName("UTF-8"));

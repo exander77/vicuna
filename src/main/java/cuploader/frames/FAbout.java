@@ -137,15 +137,17 @@ public class FAbout extends javax.swing.JFrame {
 
     private void bCheckUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCheckUpdateActionPerformed
         try {
-            List<String> pages = List.of("User:Yarl/VicunaUploader/version");
+            List<String> pages = List.of("User:Exander77/VicunaUploader/version");
             String v = Wiki.newSession("commons.wikimedia.org").getPageText(pages).get(0).trim();
-            if(Double.parseDouble(v)>Double.parseDouble(Data.version)) {
+            Logger.getLogger(FAbout.class.getName()).log(Level.INFO, "Newest version: {0}", v);
+            Logger.getLogger(FAbout.class.getName()).log(Level.INFO, "Curent version: {0}{1}", new Object[]{Data.version, Data.minorVersion});
+            if(v.compareTo(Data.version+Data.minorVersion)>0) {
                 Object[] o = {bundle.getString("button-download"), bundle.getString("button-cancel")};
-                int n = JOptionPane.showOptionDialog(rootPane, "<html><body>" + bundle.getString("about-checkupdate-text") + " (<b>" + v + "</b>). " + bundle.getString("about-checkupdate-download") + "</body></html>", bundle.getString("about-checkupdate"), 
+                int n = JOptionPane.showOptionDialog(rootPane, "<html><body>" + bundle.getString("about-checkupdate-text") + " (<b>" + v + "</b>).</body></html>", bundle.getString("about-checkupdate"), 
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, o, o[0]);
                 if(n==0) {
                     try {
-                        Desktop.getDesktop().browse(new URI("http://yarl.github.io/vicuna/"));
+                        Desktop.getDesktop().browse(new URI("https://github.com/exander77/vicuna/releases"));
                     } catch (URISyntaxException ex) {
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
@@ -162,7 +164,7 @@ public class FAbout extends javax.swing.JFrame {
 
     private void bProgramSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProgramSiteActionPerformed
         try {
-            Desktop.getDesktop().browse(new URI("http://yarl.github.io/vicuna/"));
+            Desktop.getDesktop().browse(new URI("https://github.com/exander77/vicuna/"));
         } catch (URISyntaxException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

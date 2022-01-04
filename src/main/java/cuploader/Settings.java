@@ -92,6 +92,74 @@ public class Settings {
         quickTemplates.add(new QuickTemplate(Data.text("file-wiki-fr"), "{{fr|1=%TEXT%}}", true));
     }
 
+    public Settings(Settings settings) {
+        super();
+        //User
+        server = settings.server;
+        username = settings.username;
+
+        protocol = settings.protocol;
+        path = settings.path;
+
+        //SETTINGS
+        //General
+        author = settings.author;
+        source = settings.source;
+        permission = settings.permission;
+        license = settings.license;
+        licenseCustom = settings.licenseCustom;
+        attribution = settings.attribution;
+        categories = settings.categories;
+        extraText = settings.extraText;
+
+        //File
+        copyName = settings.copyName;
+        copyDescription = settings.copyDescription;
+        copyCategories = settings.copyCategories;
+
+        showCatHints = settings.showCatHints;
+
+        //Gallery
+        createGallery = settings.createGallery;
+        galleryPage = settings.galleryPage;
+        galleryHeader = settings.galleryHeader;
+        galleryWidth = settings.galleryWidth;
+        galleryOnTop = settings.galleryOnTop;
+
+        //Program
+        readExifHour = settings.readExifHour;
+        loadSubdirectory = settings.loadSubdirectory;
+        renameAfterUpload = settings.renameAfterUpload;
+        serverMonitorEnabled = settings.serverMonitorEnabled;
+        askQuit = settings.askQuit;
+        uploadSummary = settings.uploadSummary;
+
+        fileDescSource = settings.fileDescSource;
+        fileDescPath = settings.fileDescPath;
+
+        defaultDir = settings.defaultDir;
+
+        //Validation
+        checkPrefixBlacklist = settings.checkPrefixBlacklist;
+        checkIfExists = settings.checkIfExists;
+        checkGPS = settings.checkGPS;
+        checkUniqueNames = settings.checkUniqueNames;
+
+        //WINDOW POSITION
+        windowSize = settings.windowSize;
+        windowPosition = settings.windowPosition;
+
+        //FILE EDIT
+        numFormat = settings.numFormat;
+        numDigits = settings.numDigits;
+
+        coor = settings.coor;
+        coorZoom = settings.coorZoom;
+
+        //OTHER
+        lang = settings.lang;
+    }
+
     public boolean isServerMonitorEnabled() {
         return serverMonitorEnabled;
     }

@@ -2,6 +2,8 @@ package cuploader.frames;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.converters.awt.DimensionConverter;
+import com.thoughtworks.xstream.converters.awt.PointConverter;
 import com.thoughtworks.xstream.converters.enums.EnumConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
@@ -1201,6 +1203,8 @@ public final class Main extends javax.swing.JFrame
           cuploader.Settings.class.getPackageName() + ".**"
         });
         xstream.registerConverter(new MigrateOldLicense());
+        xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);
+        xstream.registerConverter(new PointConverter(), Integer.MAX_VALUE);
         xstream.processAnnotations(cuploader.Settings.class);
         xstream.processAnnotations(cuploader.QuickTemplate.class);
         xstream.processAnnotations(cuploader.DescSource.class);
@@ -1422,6 +1426,8 @@ public final class Main extends javax.swing.JFrame
       xstream.processAnnotations(cuploader.DescSource.class);
       xstream.processAnnotations(cuploader.SessionFile.class);
       xstream.processAnnotations(cuploader.SessionList.class);
+      xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);
+      xstream.registerConverter(new PointConverter(), Integer.MAX_VALUE);
 
       try {
         Writer writer = new OutputStreamWriter(new FileOutputStream(f), Charset.forName("UTF-8"));
@@ -1487,6 +1493,8 @@ class Comment {
         xstream.processAnnotations(cuploader.Settings.class);
         xstream.processAnnotations(cuploader.QuickTemplate.class);
         xstream.processAnnotations(cuploader.DescSource.class);
+        xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);
+        xstream.registerConverter(new PointConverter(), Integer.MAX_VALUE);
         Data.settings = (Settings) xstream.fromXML(settings);
       }
       
@@ -1494,6 +1502,8 @@ class Comment {
         XStream xstream = new XStream(new DomDriver("UTF-8"));
         xstream.processAnnotations(cuploader.SessionList.class);
         xstream.processAnnotations(cuploader.SessionFile.class);
+        xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);
+        xstream.registerConverter(new PointConverter(), Integer.MAX_VALUE);
 
         try {
           SessionList sessionList = (SessionList) xstream.fromXML(files);

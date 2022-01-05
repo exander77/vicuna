@@ -18,6 +18,9 @@ import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import org.wikipedia.Wiki;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class FUpload extends javax.swing.JFrame {
     ArrayList<PFile> list = new ArrayList<PFile>();
     private volatile boolean stopRq = false;
@@ -383,15 +386,19 @@ public class FUpload extends javax.swing.JFrame {
                         ++uploaded;
                     } catch (UnknownError ex) {
                         file.setAsFailed(Data.text("upload-error-file") + ": " + ex.getLocalizedMessage());
+                        Logger.getLogger(FAbout.class.getName()).log(Level.SEVERE, Data.text("upload-error-file") + ": " + ex.getLocalizedMessage(), ex);
                     } catch (CredentialNotFoundException ex) {
                         JOptionPane.showMessageDialog(rootPane, Data.text("upload-error-account"), Data.text("upload-uploading"), JOptionPane.ERROR_MESSAGE);
                         break;
                     } catch (CredentialException ex) {
                         file.setAsFailed(Data.text("upload-error-file-protected"));
+                        Logger.getLogger(FAbout.class.getName()).log(Level.SEVERE, Data.text("upload-error-file-protected"), ex);
                     } catch (LoginException ex) {
                         file.setAsFailed(ex.getLocalizedMessage());
+                        Logger.getLogger(FAbout.class.getName()).log(Level.SEVERE, ex.getLocalizedMessage(), ex);
                     } catch (IOException ex) {
                         file.setAsFailed(ex.getLocalizedMessage());
+                        Logger.getLogger(FAbout.class.getName()).log(Level.SEVERE, ex.getLocalizedMessage(), ex);
                     }
                     Progress.setValue(i+1);
                     ++i;

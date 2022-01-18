@@ -516,7 +516,7 @@ public class Wiki implements Comparable<Wiki>
             }
         }
         maxtries = Integer.parseInt(props.getProperty("maxretries", "2"));
-        log2_upload_size = Integer.parseInt(props.getProperty("loguploadsize", "22")); // 4 MB
+        log2_upload_size = Integer.parseInt(props.getProperty("loguploadsize", "21")); // 4 MB
         read_timeout_msec = Integer.parseInt(props.getProperty("readtimeout", "180000")); // 180 seconds
         cookies = new CookieManager(null, CookiePolicy.ACCEPT_ALL);
         client = HttpClient.newBuilder()
@@ -1348,6 +1348,24 @@ public class Wiki implements Comparable<Wiki>
         ret.put("admins", Integer.parseInt(parseAttribute(text, "admins", 0)));
         ret.put("jobs", Integer.parseInt(parseAttribute(text, "jobs", 0))); // job queue length
         return ret;
+    }
+    
+    /**
+     *  Require the given extension be installed on this wiki, or throw an 
+     *  UnsupportedOperationException if it isn't.
+     *  @param extension the name of the extension to check
+     *  @throws UnsupportedOperationException if that extension is not
+     *  installed on this wiki
+     *  @throws UncheckedIOException if the site info cache is not populated
+     *  and a network error occurs when populating it
+     *  @since 0.37
+     */
+    public void requiresExtension(String extension)
+    {
+        if (!installedExtensions().contains(extension))
+            throw new UnsupportedOperationException("Extension \"" + extension
+                + "\" is not installed on " + getDomain() + ". "
+                + "Please check the extension name and [[Special:Version]].");
     }
 
     /**

@@ -516,7 +516,7 @@ public class Wiki implements Comparable<Wiki>
             }
         }
         maxtries = Integer.parseInt(props.getProperty("maxretries", "2"));
-        log2_upload_size = Integer.parseInt(props.getProperty("loguploadsize", "21")); // 4 MB
+        log2_upload_size = Integer.parseInt(props.getProperty("loguploadsize", "21")); // 2 MB
         read_timeout_msec = Integer.parseInt(props.getProperty("readtimeout", "180000")); // 180 seconds
         cookies = new CookieManager(null, CookiePolicy.ACCEPT_ALL);
         client = HttpClient.newBuilder()

@@ -3,3 +3,4 @@ build
 settings.vicuna
 .gradle
 dist
+.idea

@@ -34,7 +34,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'cuploader.frames.FIntro'
+    mainClass.set('cuploader.frames.FIntro')
     applicationName = 'vicuna'
     //applicationDefaultJvmArgs = ["-XX:+IgnoreUnrecognizedVMOptions", "--add-opens", "java.desktop/java.awt=ALL-UNNAMED"]
 }

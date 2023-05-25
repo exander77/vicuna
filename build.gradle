@@ -24,7 +24,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.thoughtworks.xstream:xstream:1.4.20'
     // TODO Update
-    implementation 'com.drewnoakes:metadata-extractor:2.6.2'
+    implementation 'com.drewnoakes:metadata-extractor:2.7.2'
     implementation 'org.swinglabs.swingx:swingx-all:1.6.5-1'
     implementation 'org.jxmapviewer:jxmapviewer2:2.6'
 

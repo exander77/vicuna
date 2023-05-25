@@ -1024,9 +1024,9 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
 
             directory = ImageMetadataReader.readMetadata(file).getDirectory(GpsDirectory.class);
             if(directory != null) {
-                String lat = directory.getDescription(GpsDirectory.TAG_GPS_LATITUDE);
-                String lon  = directory.getDescription(GpsDirectory.TAG_GPS_LONGITUDE);
-                String heading = directory.getDescription(GpsDirectory.TAG_GPS_IMG_DIRECTION);
+                String lat = directory.getDescription(GpsDirectory.TAG_LATITUDE);
+                String lon  = directory.getDescription(GpsDirectory.TAG_LONGITUDE);
+                String heading = directory.getDescription(GpsDirectory.TAG_IMG_DIRECTION);
                 
                 if(lat!=null && lon!=null) {
                     String[] NS = lat.split(" ");
@@ -1042,8 +1042,8 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
                       heading = heading.substring(0, heading.indexOf(" degrees"));
                     }
                         
-                    coor = new Coord(NS, directory.getDescription(GpsDirectory.TAG_GPS_LATITUDE_REF),
-                            EW, directory.getDescription(GpsDirectory.TAG_GPS_LONGITUDE_REF), heading);
+                    coor = new Coord(NS, directory.getDescription(GpsDirectory.TAG_LATITUDE_REF),
+                            EW, directory.getDescription(GpsDirectory.TAG_LONGITUDE_REF), heading);
                     setCoordinates(coor);
                 } else resetCoordinates();
             } else resetCoordinates();

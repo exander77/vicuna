@@ -1004,7 +1004,7 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
      */
     private void readEXIF() {
         try {
-            Directory directory = ImageMetadataReader.readMetadata(file).getDirectory(ExifIFD0Directory.class);
+            Directory directory = ImageMetadataReader.readMetadata(file).getFirstDirectoryOfType(ExifIFD0Directory.class);
             if(directory != null && directory.containsTag(ExifIFD0Directory.TAG_ORIENTATION)) {
                 String rotate = directory.getDescription(ExifIFD0Directory.TAG_ORIENTATION);
                 if(rotate.contains("90 CW")) rotateThumb = 1;
@@ -1012,7 +1012,7 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
                 else if(rotate.contains("270 CW")) rotateThumb = 3;
             }
                     
-            directory = ImageMetadataReader.readMetadata(file).getDirectory(ExifSubIFDDirectory.class);
+            directory = ImageMetadataReader.readMetadata(file).getFirstDirectoryOfType(ExifSubIFDDirectory.class);
             if(directory != null && directory.containsTag(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)) {
                 Date date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
                 SimpleDateFormat sdf;
@@ -1022,11 +1022,11 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
             } else 
                 tDate.setText("");
 
-            directory = ImageMetadataReader.readMetadata(file).getDirectory(GpsDirectory.class);
+            directory = ImageMetadataReader.readMetadata(file).getFirstDirectoryOfType(GpsDirectory.class);
             if(directory != null) {
-                String lat = directory.getDescription(GpsDirectory.TAG_GPS_LATITUDE);
-                String lon  = directory.getDescription(GpsDirectory.TAG_GPS_LONGITUDE);
-                String heading = directory.getDescription(GpsDirectory.TAG_GPS_IMG_DIRECTION);
+                String lat = directory.getDescription(GpsDirectory.TAG_LATITUDE);
+                String lon  = directory.getDescription(GpsDirectory.TAG_LONGITUDE);
+                String heading = directory.getDescription(GpsDirectory.TAG_IMG_DIRECTION);
                 
                 if(lat!=null && lon!=null) {
                     String[] NS = lat.split(" ");
@@ -1042,8 +1042,8 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
                       heading = heading.substring(0, heading.indexOf(" degrees"));
                     }
                         
-                    coor = new Coord(NS, directory.getDescription(GpsDirectory.TAG_GPS_LATITUDE_REF),
-                            EW, directory.getDescription(GpsDirectory.TAG_GPS_LONGITUDE_REF), heading);
+                    coor = new Coord(NS, directory.getDescription(GpsDirectory.TAG_LATITUDE_REF),
+                            EW, directory.getDescription(GpsDirectory.TAG_LONGITUDE_REF), heading);
                     setCoordinates(coor);
                 } else resetCoordinates();
             } else resetCoordinates();
@@ -1059,7 +1059,7 @@ public final class PFile extends javax.swing.JPanel implements KeyListener {
 ￼     */
     private void readIPTC() {
         try {
-            Directory directory = ImageMetadataReader.readMetadata(file).getDirectory(IptcDirectory.class);
+            Directory directory = ImageMetadataReader.readMetadata(file).getFirstDirectoryOfType(IptcDirectory.class);
             if (directory != null && directory.containsTag(IptcDirectory.TAG_CAPTION)) {
                 tDesc.setText(directory.getDescription(IptcDirectory.TAG_CAPTION));
             }

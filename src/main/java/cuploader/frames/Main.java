@@ -1419,6 +1419,10 @@ public final class Main extends javax.swing.JFrame
   private boolean saveSessionFile(File f) {
     try {
       XStream xstream = new XStream(new DomDriver("UTF-8"));
+      xstream.allowTypesByWildcard(new String[] {
+              Main.class.getPackageName() + ".**",
+              cuploader.Settings.class.getPackageName() + ".**"
+      });
       xstream.processAnnotations(cuploader.Settings.class);
       xstream.processAnnotations(cuploader.QuickTemplate.class);
       xstream.processAnnotations(cuploader.DescSource.class);
@@ -1488,6 +1492,10 @@ class Comment {
       
       if (!settings.isEmpty()) {
         XStream xstream = new XStream(new DomDriver("UTF-8"));
+        xstream.allowTypesByWildcard(new String[] {
+                Main.class.getPackageName() + ".**",
+                cuploader.Settings.class.getPackageName() + ".**"
+        });
         xstream.processAnnotations(cuploader.Settings.class);
         xstream.processAnnotations(cuploader.QuickTemplate.class);
         xstream.processAnnotations(cuploader.DescSource.class);
@@ -1498,6 +1506,10 @@ class Comment {
       
       if (!files.isEmpty()) {
         XStream xstream = new XStream(new DomDriver("UTF-8"));
+        xstream.allowTypesByWildcard(new String[] {
+                Main.class.getPackageName() + ".**",
+                cuploader.Settings.class.getPackageName() + ".**"
+        });
         xstream.processAnnotations(cuploader.SessionList.class);
         xstream.processAnnotations(cuploader.SessionFile.class);
         xstream.registerConverter(new DimensionConverter(), Integer.MAX_VALUE);

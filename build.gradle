@@ -22,27 +22,26 @@ repositories {
 
 dependencies {
     // This dependency is used by the application.
-    implementation 'com.thoughtworks.xstream:xstream:1.4.17'
-    // TODO Update
-    implementation 'com.drewnoakes:metadata-extractor:2.6.2'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
+    implementation 'com.drewnoakes:metadata-extractor:2.18.0'
     implementation 'org.swinglabs.swingx:swingx-all:1.6.5-1'
     implementation 'org.jxmapviewer:jxmapviewer2:2.6'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 application {
     // Define the main class for the application.
-    mainClassName = 'cuploader.frames.FIntro'
+    mainClass.set('cuploader.frames.FIntro')
     applicationName = 'vicuna'
     //applicationDefaultJvmArgs = ["-XX:+IgnoreUnrecognizedVMOptions", "--add-opens", "java.desktop/java.awt=ALL-UNNAMED"]
 }
 
 java {
     // https://docs.gradle.org/current/javadoc/org/gradle/api/JavaVersion.html
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_20
+    targetCompatibility = JavaVersion.VERSION_20
 }
 
 gradle.projectsEvaluated {
